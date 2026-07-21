@@ -43,8 +43,8 @@ in
 
     autostart = lib.mkOption {
       type = lib.types.bool;
-      default = true;
-      description = "Whether to start fcc-server on login.";
+      default = false;
+      description = "Start fcc-server at login; when false the fclaudec launcher starts it on demand.";
     };
   };
 
@@ -71,9 +71,26 @@ in
       cfg.package
       (pkgs.writeShellApplication {
         name = "fclaudec";
+        runtimeInputs = [
+          pkgs.systemd
+          pkgs.curl
+          pkgs.coreutils
+        ];
         text = ''
           export CLAUDE_CONFIG_DIR="${cfg.claudeConfigDir}"
           export FCC_ENV_FILE="${bindEnvFile}"
+          if ! systemctl --user is-active --quiet free-claude-code.service; then
+            systemctl --user start free-claude-code.service
+          fi
+          tries=0
+          until curl -fsS -o /dev/null "http://${cfg.host}:${toString cfg.port}/health"; do
+            tries=$((tries + 1))
+            if [ "$tries" -ge 50 ]; then
+              echo "fclaudec: free-claude-code is not healthy on ${cfg.host}:${toString cfg.port}; check: systemctl --user status free-claude-code" >&2
+              exit 1
+            fi
+            sleep 0.2
+          done
           exec ${cfg.package}/bin/fcc-claude "$@"
         '';
       })
