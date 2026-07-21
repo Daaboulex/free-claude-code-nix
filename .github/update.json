@@ -1,0 +1,30 @@
+{
+  "package": "free-claude-code",
+  "upstream": {
+    "type": "github-commit",
+    "owner": "Alishahryar1",
+    "repo": "free-claude-code"
+  },
+  "packageFile": "package.nix",
+  "versionScheme": "rev-only",
+  "hashes": [
+    "hash"
+  ],
+  "verify": {
+    "binary": "fcc-server",
+    "args": "--version"
+  },
+  "description": "Free Claude Code packaged for NixOS - Anthropic-compatible local proxy fronting Claude Code with any model backend",
+  "topics": [
+    "nix",
+    "nixos",
+    "flake",
+    "home-manager",
+    "free-claude-code",
+    "claude-code",
+    "anthropic",
+    "llm",
+    "proxy",
+    "fastapi"
+  ]
+}
