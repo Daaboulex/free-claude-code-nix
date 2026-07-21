@@ -6,7 +6,8 @@
     "repo": "free-claude-code"
   },
   "packageFile": "package.nix",
-  "versionScheme": "rev-only",
+  "versionScheme": "unstable-date",
+  "versionBase": "4.12.0",
   "hashes": [
     "hash"
   ],

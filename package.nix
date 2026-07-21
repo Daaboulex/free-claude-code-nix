@@ -6,7 +6,7 @@
 
 python314.pkgs.buildPythonApplication {
   pname = "free-claude-code";
-  version = "4.11.7";
+  version = "4.12.0-unstable-2026-07-21";
   pyproject = true;
 
   src = fetchFromGitHub {
