@@ -38,13 +38,13 @@ in
     claudeConfigDir = lib.mkOption {
       type = lib.types.str;
       default = "${config.home.homeDirectory}/.claude-fcc";
-      description = "CLAUDE_CONFIG_DIR exported by the fclaudec launcher.";
+      description = "CLAUDE_CONFIG_DIR exported by the fcc launcher.";
     };
 
     autostart = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Start fcc-server at login; when false the fclaudec launcher starts it on demand.";
+      description = "Start fcc-server at login; when false the fcc launcher starts it on demand.";
     };
   };
 
@@ -70,7 +70,7 @@ in
     home.packages = [
       cfg.package
       (pkgs.writeShellApplication {
-        name = "fclaudec";
+        name = "fcc";
         runtimeInputs = [
           pkgs.systemd
           pkgs.curl
@@ -86,7 +86,7 @@ in
           until curl -fsS -o /dev/null "http://${cfg.host}:${toString cfg.port}/health"; do
             tries=$((tries + 1))
             if [ "$tries" -ge 50 ]; then
-              echo "fclaudec: free-claude-code is not healthy on ${cfg.host}:${toString cfg.port}; check: systemctl --user status free-claude-code" >&2
+              echo "fcc: free-claude-code is not healthy on ${cfg.host}:${toString cfg.port}; check: systemctl --user status free-claude-code" >&2
               exit 1
             fi
             sleep 0.2

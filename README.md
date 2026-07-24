@@ -21,10 +21,10 @@ Nix flake packaging for [free-claude-code](https://github.com/Alishahryar1/free-
 
 ## What Is This?
 
-A Nix flake that builds free-claude-code from a pinned upstream commit, plus a Home Manager module that runs `fcc-server` as a user service and ships a `fclaudec` launcher wired to it.
+A Nix flake that builds free-claude-code from a pinned upstream commit, plus a Home Manager module that runs `fcc-server` as a user service and ships an `fcc` launcher wired to it.
 
 - **Package** - `fcc-server`, `fcc-claude`, `fcc-codex`, `fcc-pi` entry points from a hatchling wheel on Python 3.14
-- **Home Manager module** - `services.free-claude-code`: a loopback-bound `fcc-server` user service plus the `fclaudec` launcher pointing Claude Code at it
+- **Home Manager module** - `services.free-claude-code`: a loopback-bound `fcc-server` user service plus the `fcc` launcher pointing Claude Code at it
 - **Update automation** - daily upstream commit detection, hash recomputation, and a verified build
 
 <!-- BEGIN generated:installation -->
@@ -65,7 +65,7 @@ services.free-claude-code.enable = true;
 | `package` | `pkgs.free-claude-code` | Package to run (provided by the overlay) |
 | `host` | `"127.0.0.1"` | Address `fcc-server` binds (`HOST`) |
 | `port` | `8082` | Port `fcc-server` listens on (`PORT`) |
-| `claudeConfigDir` | `"~/.claude-fcc"` | `CLAUDE_CONFIG_DIR` the `fclaudec` launcher exports |
+| `claudeConfigDir` | `"~/.claude-fcc"` | `CLAUDE_CONFIG_DIR` the `fcc` launcher exports |
 | `autostart` | `true` | Start the service on login |
 
 The service binds loopback by default and no firewall options are provided; keeping it local is the security posture. An empty `ANTHROPIC_AUTH_TOKEN` disables proxy auth.
@@ -78,10 +78,10 @@ Runtime configuration lives in `~/.fcc/.env` (process environment overrides it):
 mkdir -p ~/.fcc
 printf '%s\n' 'DEEPSEEK_API_KEY=sk-your-key' 'MODEL=deepseek/deepseek-chat' > ~/.fcc/.env
 systemctl --user start free-claude-code
-fclaudec
+fcc
 ```
 
-`fclaudec` exports `CLAUDE_CONFIG_DIR` plus the service's `HOST`/`PORT` and execs `fcc-claude`, which points Claude Code at the running proxy.
+`fcc` exports `CLAUDE_CONFIG_DIR` plus the service's `HOST`/`PORT` and execs `fcc-claude`, which points Claude Code at the running proxy.
 
 ## Development
 
