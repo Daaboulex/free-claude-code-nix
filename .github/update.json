@@ -7,7 +7,7 @@
   },
   "packageFile": "package.nix",
   "versionScheme": "unstable-date",
-  "versionBase": "4.12.0",
+  "versionBase": "4.20.0",
   "hashes": [
     "hash"
   ],

@@ -6,7 +6,7 @@
 
 python314.pkgs.buildPythonApplication {
   pname = "free-claude-code";
-  version = "4.12.0-unstable-2026-08-12";
+  version = "4.20.0-unstable-2026-08-12";
   pyproject = true;
 
   src = fetchFromGitHub {
@@ -42,6 +42,7 @@ python314.pkgs.buildPythonApplication {
   pythonRelaxDeps = [
     "discord.py"
     "fastapi"
+    "google-auth"
     "markdown-it-py"
     "openai"
     "pydantic-settings"
