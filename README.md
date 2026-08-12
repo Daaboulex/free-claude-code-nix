@@ -101,7 +101,4 @@ Upstream publishes no tags, so this repo is commit-tracked: daily automation rea
 This Nix packaging repo is MIT licensed (see `LICENSE`). The upstream [free-claude-code](https://github.com/Alishahryar1/free-claude-code) project is MIT licensed as well.
 
 <!-- BEGIN generated:footer -->
----
-
-*Maintained as part of the [Daaboulex](https://github.com/Daaboulex) NixOS ecosystem.*
 <!-- END generated:footer -->
