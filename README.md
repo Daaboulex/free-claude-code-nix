@@ -52,7 +52,7 @@ nixpkgs.overlays = [ inputs.free-claude-code.overlays.default ];
 ## Home Manager Module
 
 ```nix
-home-manager.sharedModules = [ inputs.free-claude-code.homeManagerModules.default ];
+home-manager.sharedModules = [ inputs.free-claude-code.homeModules.default ];
 ```
 
 ```nix
