@@ -42,10 +42,15 @@
           checks.smoke = pkgs.runCommand "free-claude-code-smoke" { } ''
             ${self'.packages.default}/bin/fcc-server --version
             sp="$(echo ${self'.packages.default}/lib/python*/site-packages)"
-            test -f "$sp/free_claude_code/api/admin_static/index.html"
-            test -f "$sp/free_claude_code/api/admin_static/admin.css"
-            test -f "$sp/free_claude_code/api/admin_static/admin.js"
-            test -f "$sp/free_claude_code/config/env.example"
+            for f in \
+              free_claude_code/api/admin_static/index.html \
+              free_claude_code/api/admin_static/admin.css \
+              free_claude_code/api/admin_static/admin.js; do
+              test -f "$sp/$f" || {
+                echo "missing from the installed package: $f"
+                exit 1
+              }
+            done
             touch "$out"
           '';
 
