@@ -23,7 +23,7 @@ Nix flake packaging for [free-claude-code](https://github.com/Alishahryar1/free-
 
 A Nix flake that builds free-claude-code from a pinned upstream commit, plus a Home Manager module that runs `fcc-server` as a user service and ships an `fcc` launcher wired to it.
 
-- **Package** - `fcc-server`, `fcc-claude`, `fcc-codex`, `fcc-pi` entry points from a hatchling wheel on Python 3.14
+- **Package** - `fcc-server`, `fcc-claude`, `fcc-cline`, `fcc-codex`, `fcc-desktop`, `fcc-hermes`, `fcc-opencode`, `fcc-pi` entry points from a hatchling wheel on Python 3.14
 - **Home Manager module** - `services.free-claude-code`: a loopback-bound `fcc-server` user service plus the `fcc` launcher pointing Claude Code at it
 - **Update automation** - daily upstream commit detection, hash recomputation, and a verified build
 
@@ -66,7 +66,7 @@ services.free-claude-code.enable = true;
 | `host` | `"127.0.0.1"` | Address `fcc-server` binds (`HOST`) |
 | `port` | `8082` | Port `fcc-server` listens on (`PORT`) |
 | `claudeConfigDir` | `"~/.claude-fcc"` | `CLAUDE_CONFIG_DIR` the `fcc` launcher exports |
-| `autostart` | `true` | Start the service on login |
+| `autostart` | `false` | Start the service at login; when false the `fcc` launcher starts it on demand |
 
 The service binds loopback by default and no firewall options are provided; keeping it local is the security posture. An empty `ANTHROPIC_AUTH_TOKEN` disables proxy auth.
 
