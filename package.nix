@@ -24,6 +24,7 @@ python314.pkgs.buildPythonApplication {
     fastapi
     google-auth
     httpx
+    httpx2
     jsonschema
     loguru
     markdown-it-py
