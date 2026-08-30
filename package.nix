@@ -6,14 +6,14 @@
 
 python314.pkgs.buildPythonApplication {
   pname = "free-claude-code";
-  version = "4.20.0-unstable-2026-08-29";
+  version = "4.20.0-unstable-2026-08-30";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "Alishahryar1";
     repo = "free-claude-code";
-    rev = "f29b88b094aebb7b7391a828c2be1af61a42e378";
-    hash = "sha256-9/nVDY8QoYJ28p/pMUE18Im5HEum3RYCWHqxS5M54mE=";
+    rev = "32491e783d7c22cc677ed9435c97cbd6b8f9a50b";
+    hash = "sha256-gXBipZPkAxGaKo1qEmoUOqjEuW7cQTcWv3dKv6j6gJs=";
   };
 
   build-system = [ python314.pkgs.hatchling ];
