@@ -64,7 +64,7 @@
         };
 
       flake.overlays.default = final: _prev: {
-        free-claude-code = inputs.self.packages.${final.stdenv.hostPlatform.system}.default;
+        free-claude-code = final.callPackage ./package.nix { };
       };
       flake.homeModules.default = ./hm-module.nix;
     };
