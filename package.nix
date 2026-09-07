@@ -12,8 +12,8 @@ python314.pkgs.buildPythonApplication {
   src = fetchFromGitHub {
     owner = "Alishahryar1";
     repo = "free-claude-code";
-    rev = "a700252342c51e5b78fc19e1538e173ef9e8521c";
-    hash = "sha256-xcW9OwIh2vrYAoXlzdu4t8YNqdqj/KCJL9AyVg/ZEuw=";
+    rev = "a010b376d0061a9161f10543744f6b2d9f1dea8b";
+    hash = "sha256-BlmkTqCdG3NS305Ipym9v9Q48LX2Kq9H+VZkmN/wpuA=";
   };
 
   build-system = [ python314.pkgs.hatchling ];
