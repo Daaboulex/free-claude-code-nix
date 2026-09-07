@@ -22,6 +22,7 @@ python314.pkgs.buildPythonApplication {
     aiohttp
     discordpy
     fastapi
+    (callPackage ./github-copilot-sdk.nix { })
     google-auth
     httpx
     httpx2
