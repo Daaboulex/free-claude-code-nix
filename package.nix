@@ -6,14 +6,14 @@
 
 python314.pkgs.buildPythonApplication {
   pname = "free-claude-code";
-  version = "4.20.0-unstable-2026-09-11";
+  version = "4.20.0-unstable-2026-09-20";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "Alishahryar1";
     repo = "free-claude-code";
-    rev = "e632c85b9765ca1a2e18f7bc7ec1b003729740f6";
-    hash = "sha256-YUEhMoAsmM8x1t7DcgFoyNLpgX2nvNDU4ozCBsmX4eA=";
+    rev = "bdbec488ed688123c7fa564186df548df5b83559";
+    hash = "sha256-1qInE2XuMMnd/K9+L7VKno7nkmSzODIduDVhmEGEKMY=";
   };
 
   build-system = [ python314.pkgs.hatchling ];
@@ -26,6 +26,7 @@ python314.pkgs.buildPythonApplication {
     google-auth
     httpx
     httpx2
+    json5
     jsonschema
     loguru
     markdown-it-py
@@ -36,19 +37,25 @@ python314.pkgs.buildPythonApplication {
     python-dotenv
     python-telegram-bot
     requests
+    simplejson
     socksio
     tiktoken
+    tomlkit
     uvicorn
   ];
 
   pythonRelaxDeps = [
+    "anyio"
     "discord.py"
     "fastapi"
     "google-auth"
+    "json5"
     "markdown-it-py"
     "openai"
+    "pydantic"
     "pydantic-settings"
     "python-telegram-bot"
+    "simplejson"
     "tiktoken"
     "uvicorn"
   ];
