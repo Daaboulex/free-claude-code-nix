@@ -14,7 +14,7 @@ Nix flake packaging for [free-claude-code](https://github.com/Alishahryar1/free-
 | | |
 |---|---|
 | **Project** | [Alishahryar1/free-claude-code](https://github.com/Alishahryar1/free-claude-code) |
-| **License** | MIT |
+| **License** | AGPL-3.0-only |
 | **Tracked** | GitHub commits (`main`) |
 
 <!-- END generated:upstream -->
@@ -23,7 +23,7 @@ Nix flake packaging for [free-claude-code](https://github.com/Alishahryar1/free-
 
 A Nix flake that builds free-claude-code from a pinned upstream commit, plus a Home Manager module that runs `fcc-server` as a user service and ships an `fcc` launcher wired to it.
 
-- **Package** - `fcc-server`, `fcc-claude`, `fcc-cline`, `fcc-codex`, `fcc-desktop`, `fcc-hermes`, `fcc-opencode`, `fcc-pi` entry points from a hatchling wheel on Python 3.14
+- **Package** - `fcc-server` and every other entry point upstream's `pyproject.toml` declares, from a hatchling wheel on Python 3.14
 - **Home Manager module** - `services.free-claude-code`: a loopback-bound `fcc-server` user service plus the `fcc` launcher pointing Claude Code at it
 - **Update automation** - daily upstream commit detection, hash recomputation, and a verified build
 
@@ -98,7 +98,7 @@ This repo tracks upstream `main`: daily automation takes upstream's newest relea
 
 ## License
 
-This Nix packaging repo is MIT licensed (see `LICENSE`). The upstream [free-claude-code](https://github.com/Alishahryar1/free-claude-code) project is MIT licensed as well.
+This Nix packaging repo is MIT licensed (see `LICENSE`). The upstream [free-claude-code](https://github.com/Alishahryar1/free-claude-code) project is licensed AGPL-3.0-only, which the package declares in `meta.license`.
 
 <!-- BEGIN generated:footer -->
 <!-- END generated:footer -->

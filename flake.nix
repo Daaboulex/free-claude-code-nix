@@ -37,7 +37,7 @@
           ...
         }:
         {
-          packages.default = pkgs.callPackage ./package.nix { };
+          packages.default = (pkgs.extend self.overlays.default).free-claude-code;
 
           checks.smoke = pkgs.runCommand "free-claude-code-smoke" { } ''
             ${self'.packages.default}/bin/fcc-server --version
@@ -63,9 +63,21 @@
           };
         };
 
-      flake.overlays.default = final: _prev: {
-        free-claude-code = final.callPackage ./package.nix { };
-      };
+      flake.overlays =
+        let
+          glueOverlay = final: _prev: {
+            free-claude-code = final.callPackage ./package.nix { };
+          };
+          dir = ./overlays;
+          names = if builtins.pathExists dir then builtins.attrNames (builtins.readDir dir) else [ ];
+          fixOverlays = map (n: (import (dir + "/${n}")).overlay) (
+            builtins.filter (n: inputs.nixpkgs.lib.hasSuffix ".nix" n) names
+          );
+        in
+        {
+          default = inputs.nixpkgs.lib.composeManyExtensions ([ glueOverlay ] ++ fixOverlays);
+          probe = glueOverlay;
+        };
       flake.homeModules.default = ./hm-module.nix;
     };
 }

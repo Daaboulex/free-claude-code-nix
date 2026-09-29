@@ -8,7 +8,7 @@
 }:
 
 let
-  version = "1.0.13";
+  version = "1.0.14";
 in
 buildPythonPackage {
   pname = "github-copilot-sdk";
@@ -21,7 +21,7 @@ buildPythonPackage {
     format = "wheel";
     dist = "py3";
     python = "py3";
-    hash = "sha256-lB3VtVzzK6Vcc8ZRBSpKUrJZtHDGi/amrD0kDCNUAsk=";
+    hash = "sha256-n0U4zscpXyRQfGUNeUMHOWRYpR8oCg+7zYQNoXcQkFA=";
   };
 
   dependencies = [
