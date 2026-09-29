@@ -53,6 +53,10 @@ python314.pkgs.buildPythonApplication (finalAttrs: {
     uvicorn
   ];
 
+  postInstall = ''
+    rm "$out/bin/fcc-update" "$out/bin/fcc-update.cmd" "$out/bin/_fcc-update-check"
+  '';
+
   pythonImportsCheck = [ "free_claude_code" ];
 
   meta = {
