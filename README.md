@@ -94,7 +94,7 @@ nix build
 
 ## Updates
 
-Upstream publishes no tags, so this repo is commit-tracked: daily automation reads upstream `main`, bumps `rev` and the source hash while the `version` literal mirrors upstream's `pyproject.toml`, rebuilds, and verifies `fcc-server --version` before pushing. Weekly maintenance refreshes `flake.lock` and prunes stale branches.
+This repo tracks upstream `main`: daily automation takes upstream's newest release tag as the version base (`<tag>-unstable-<date>`), bumps `rev` and the source hash, rebuilds on every declared system, and verifies `fcc-server --version` before pushing. Maintenance refreshes `flake.lock` on the repo's cadence and prunes stale branches.
 
 ## License
 
