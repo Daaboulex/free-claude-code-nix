@@ -9,7 +9,10 @@
   "versionScheme": "unstable-date",
   "versionBase": "4.20.0",
   "hashes": [
-    "hash"
+    {
+      "field": "hash",
+      "file": "package.nix"
+    }
   ],
   "verify": {
     "binary": "fcc-server",
