@@ -6,14 +6,14 @@
 
 python314.pkgs.buildPythonApplication (finalAttrs: {
   pname = "free-claude-code";
-  version = "6.5.11-unstable-2026-09-30";
+  version = "6.8.3-unstable-2026-10-03";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "Alishahryar1";
     repo = "free-claude-code";
-    rev = "7195cefd5d0c197a9809e851a65b4a940918cee8";
-    hash = "sha256-jimMJ53kVBtlYcOj6fkAsP1EozvKL41FRLjE7GVs5/4=";
+    rev = "3cf3a9be01340d5c90f48f95326702f904e3c694";
+    hash = "sha256-oUglx1LIf9DgFkX4omDqM+i23xJoddTpUmdzeElmYtU=";
   };
 
   env.SETUPTOOLS_SCM_PRETEND_VERSION = lib.head (lib.splitString "-unstable-" finalAttrs.version);
